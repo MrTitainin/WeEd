@@ -147,7 +147,7 @@ public class StructureGenerator
 
     LinkedList<KeyData> portrait = new LinkedList<KeyData>();
     portrait.add(new KeyData("size", KeyData.KEY));
-    values = new LinkedList<String>();
+    values.clear();
     values.add("left");
     values.add("right");
     portrait.add(new KeyData("size", KeyData.OPTIONS, values));
@@ -168,22 +168,24 @@ public class StructureGenerator
     unit.add(new KeyData("General",KeyData.SEPARATOR));
     unit.add(new KeyData("side",KeyData.INTEGER));
     unit.add(new KeyData("type",KeyData.KEY));
-    unit.add(new KeyData("name",KeyData.STRING));
+    unit.add(new KeyData("name",KeyData.STRING,true));
     unit.add(new KeyData("id",KeyData.KEY));
-    values = new LinkedList<String>();
+    values.clear();
     values.add("female");
     unit.add(new KeyData("gender",KeyData.OPTIONS,values,"male"));
     unit.add(new KeyData("variation",KeyData.KEY));
-    values = new LinkedList<String>();
+    values.clear();
     values.add("leader");
     values.add("recall");
     values.add("map_overwrite");
     values.add("map_passable");
     values.add("leader_passable");
     unit.add(new KeyData("placement",KeyData.OPTIONS,values,"map"));
+    unit.add(new KeyData("x",KeyData.INTEGER));
+    unit.add(new KeyData("y",KeyData.INTEGER));
     
     unit.add(new KeyData("Images",KeyData.SEPARATOR));
-    values = new LinkedList<String>();
+    values.clear();
     values.add("s");
     values.add("sw");
     values.add("nw");
@@ -235,7 +237,7 @@ public class StructureGenerator
     LinkedList<KeyData> side = new LinkedList<KeyData>();
     side.add(new KeyData("General",KeyData.SEPARATOR));
     side.add(new KeyData("side", KeyData.INTEGER));
-    values = new LinkedList<String>();
+    values.clear();
     values.add("ai");
     values.add("null");
     values.add("1");
@@ -260,7 +262,7 @@ public class StructureGenerator
     side.add(new KeyData("persistent", KeyData.BOOLEAN));
     side.add(new KeyData("save_id", KeyData.KEY));
     side.add(new KeyData("team_name", KeyData.KEY));
-    side.add(new KeyData("user_team_name", KeyData.STRING));
+    side.add(new KeyData("user_team_name", KeyData.STRING,true));
     side.add(new KeyData("current_player", KeyData.STRING));
     side.add(new KeyData("color", KeyData.KEY));
     side.add(new KeyData("flag", KeyData.STRING));
@@ -314,7 +316,7 @@ public class StructureGenerator
         side.add(new KeyData("extra_recruit",KeyData.STRING));
         side.add(new KeyData("unrenamable",KeyData.BOOLEAN));
         side.add(new KeyData("type",KeyData.KEY));
-        side.add(new KeyData("name",KeyData.STRING));
+        side.add(new KeyData("name",KeyData.STRING,true));
         side.add(new KeyData("id",KeyData.KEY));
         values = new LinkedList<String>();
         values.add("female");
@@ -323,10 +325,57 @@ public class StructureGenerator
     }
     result.put("[side]", side.toArray(keyData));
     
+    
+    LinkedList<KeyData> message = new LinkedList<KeyData>();
+    message.add(new KeyData("General", KeyData.SEPARATOR));
+    message.add(new KeyData("speaker",KeyData.STRING));
+    message.add(new KeyData("message",KeyData.STRING,true));
+    message.add(new KeyData("image",KeyData.FILE));
+    message.add(new KeyData("caption",KeyData.STRING,true));
+    
+    message.add(new KeyData("Advanced", KeyData.SEPARATOR));
+    message.add(new KeyData("mirror",KeyData.BOOLEAN));
+    message.add(new KeyData("male_message",KeyData.STRING,true));
+    message.add(new KeyData("female_message",KeyData.STRING,true));
+    message.add(new KeyData("second_image",KeyData.FILE));
+    values.clear();
+    values.add("right");
+    message.add(new KeyData("image_pos",KeyData.OPTIONS,values,"left"));
+    message.add(new KeyData("scroll",KeyData.BOOLEAN));
+    message.add(new KeyData("highlight",KeyData.BOOLEAN));
+    message.add(new KeyData("sound",KeyData.FILE));
+    message.add(new KeyData("variable",KeyData.STRING));
+    
+    message.add(new KeyData("Multiplayer", KeyData.SEPARATOR));
+    message.add(new KeyData("wait_description",KeyData.STRING));
+    result.put("[message]", message.toArray(keyData));
+    
+    LinkedList<KeyData> scenario = new LinkedList<KeyData>();
+    scenario.add(new KeyData("id",KeyData.STRING));
+    scenario.add(new KeyData("name",KeyData.STRING));
+    scenario.add(new KeyData("turns",KeyData.INTEGER));
+    scenario.add(new KeyData("map_data",KeyData.STRING));
+    scenario.add(new KeyData("next_scenario",KeyData.STRING));
+    scenario.add(new KeyData("victory_when_enemies_defeaded",KeyData.STRING));
+    result.put("[message]", scenario.toArray(keyData));
+    
+    
+    LinkedList<KeyData> option = new LinkedList<KeyData>();
+    option.add(new KeyData("message",KeyData.STRING));
+    result.put("[option]", option.toArray(keyData));
+    
+    
     LinkedList<KeyData> village = new LinkedList<KeyData>();
     side.add(new KeyData("x", KeyData.INTEGER));
     side.add(new KeyData("y", KeyData.INTEGER));
     result.put("[village]", village.toArray(keyData));
+    
+    
+    LinkedList<KeyData> part = new LinkedList<KeyData>();
+    part.add(new KeyData("background", KeyData.FILE));
+    part.add(new KeyData("story", KeyData.STRING,true));
+    part.add(new KeyData("show_title", KeyData.BOOLEAN));
+    result.put("[part]", part.toArray(keyData));
     return result;
   }
 }

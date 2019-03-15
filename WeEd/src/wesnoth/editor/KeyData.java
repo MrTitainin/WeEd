@@ -11,13 +11,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.xml.bind.annotation.XmlAttribute;
 
 public class KeyData
 {
   private String key;
   private byte type;
   private String def;
+  @XmlAttribute
   private LinkedList<String> possibleValues;
+ 
   private boolean translatable;
   protected static final byte BOOLEAN = 0;
   protected static final byte KEY = 1;
@@ -185,7 +188,7 @@ public class KeyData
     return this.type == 21;
   }
 
-  protected boolean isTranslatable() {
+  protected boolean getTranslatable() {
     return this.translatable;
   }
 
