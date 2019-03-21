@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WMLdatabase>
+    <tag tag="[vision_costs]" context="0">
+        <keys type="10" translatable="false" key="flat"/>
+        <keys type="10" translatable="false" key="forest"/>
+        <keys type="10" translatable="false" key="hills"/>
+        <keys type="10" translatable="false" key="mountains"/>
+        <keys type="10" translatable="false" key="cave"/>
+        <keys type="10" translatable="false" key="fungus"/>
+        <keys type="10" translatable="false" key="village"/>
+        <keys type="10" translatable="false" key="castle"/>
+        <keys type="10" translatable="false" key="sand"/>
+        <keys type="10" translatable="false" key="frozen"/>
+        <keys type="10" translatable="false" key="swamp_water"/>
+        <keys type="10" translatable="false" key="shallow_water"/>
+        <keys type="10" translatable="false" key="deep_water"/>
+        <keys type="10" translatable="false" key="reef"/>
+        <keys type="10" translatable="false" key="unwalkable"/>
+        <keys type="10" translatable="false" key="impassable"/>
+    </tag>
+    <tag tag="[event]" context="0">
+        <keys type="1" translatable="false" key="name"/>
+        <keys type="0" translatable="false" key="first_time_only"/>
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="0" translatable="false" key="remove"/>
+    </tag>
+    <tag tag="[male]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="20" translatable="true" key="name"/>
+        <keys type="1" translatable="false" key="race"/>
+        <keys type="22" translatable="false" key="image"/>
+        <keys type="22" translatable="false" key="profile"/>
+        <keys type="22" translatable="false" key="small_profile"/>
+        <keys type="22" translatable="false" key="ellipse"/>
+        <keys type="1" translatable="false" key="flag_rgb"/>
+        <keys type="10" translatable="false" key="hitpoints"/>
+        <keys type="1" translatable="false" key="movement_type"/>
+        <keys type="10" translatable="false" key="movement"/>
+        <keys type="10" translatable="false" key="experience"/>
+        <keys type="10" translatable="false" key="level"/>
+        <keys type="2" def="neutral" translatable="false" key="alignment">
+            <value>neutral</value>
+            <value>lawful</value>
+            <value>chaotic</value>
+            <value>liminal</value>
+        </keys>
+        <keys type="1" translatable="false" key="advances_to"/>
+        <keys type="10" translatable="false" key="cost"/>
+        <keys type="1" translatable="false" key="usage"/>
+        <keys type="2" def="male" translatable="false" key="gender">
+            <value>male</value>
+            <value>female</value>
+        </keys>
+        <keys type="21" translatable="true" key="description"/>
+        <keys type="22" translatable="false" key="die_sound"/>
+        <keys type="10" translatable="false" key="attacks"/>
+        <keys type="0" translatable="false" key="do_not_list"/>
+        <keys type="0" def="false" translatable="false" key="hide_help"/>
+        <keys type="0" def="false" translatable="false" key="ignore_race_traits"/>
+        <keys type="22" translatable="false" key="image_icon"/>
+        <keys type="10" translatable="false" key="num_traits"/>
+        <keys type="10" translatable="false" key="vision"/>
+        <keys type="0" translatable="false" key="zoc"/>
+    </tag>
+    <tag tag="[status]" context="0">
+        <keys type="0" translatable="false" key="poisoned"/>
+        <keys type="0" translatable="false" key="petrified"/>
+        <keys type="0" translatable="false" key="slowed"/>
+        <keys type="0" translatable="false" key="uncovered"/>
+        <keys type="0" translatable="false" key="guardian"/>
+        <keys type="0" translatable="false" key="unhealable"/>
+    </tag>
+    <tag tag="[movement_costs]" context="0">
+        <keys type="10" translatable="false" key="flat"/>
+        <keys type="10" translatable="false" key="forest"/>
+        <keys type="10" translatable="false" key="hills"/>
+        <keys type="10" translatable="false" key="mountains"/>
+        <keys type="10" translatable="false" key="cave"/>
+        <keys type="10" translatable="false" key="fungus"/>
+        <keys type="10" translatable="false" key="village"/>
+        <keys type="10" translatable="false" key="castle"/>
+        <keys type="10" translatable="false" key="sand"/>
+        <keys type="10" translatable="false" key="frozen"/>
+        <keys type="10" translatable="false" key="swamp_water"/>
+        <keys type="10" translatable="false" key="shallow_water"/>
+        <keys type="10" translatable="false" key="deep_water"/>
+        <keys type="10" translatable="false" key="reef"/>
+        <keys type="10" translatable="false" key="unwalkable"/>
+        <keys type="10" translatable="false" key="impassable"/>
+    </tag>
+    <tag tag="[base_unit]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+    </tag>
+    <tag tag="[attack]" context="0">
+        <keys type="20" translatable="true" key="description"/>
+        <keys type="1" translatable="false" key="name"/>
+        <keys type="1" translatable="false" key="type"/>
+        <keys type="22" translatable="false" key="icon"/>
+        <keys type="1" translatable="false" key="range"/>
+        <keys type="10" translatable="false" key="damage"/>
+        <keys type="10" translatable="false" key="number"/>
+        <keys type="10" def="-1" translatable="false" key="movement_used"/>
+        <keys type="10" def="1" translatable="false" key="attack_weight"/>
+        <keys type="10" def="1" translatable="false" key="defense_weight"/>
+    </tag>
+    <tag tag="[scenario]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="20" translatable="true" key="name"/>
+        <keys type="10" translatable="false" key="turns"/>
+        <keys type="22" translatable="false" key="map_data"/>
+        <keys type="1" translatable="false" key="next_scenario"/>
+        <keys type="0" translatable="false" key="victory_when_enemies_defeaded"/>
+    </tag>
+    <tag tag="[defense]" context="0">
+        <keys type="10" translatable="false" key="flat"/>
+        <keys type="10" translatable="false" key="forest"/>
+        <keys type="10" translatable="false" key="hills"/>
+        <keys type="10" translatable="false" key="mountains"/>
+        <keys type="10" translatable="false" key="cave"/>
+        <keys type="10" translatable="false" key="fungus"/>
+        <keys type="10" translatable="false" key="village"/>
+        <keys type="10" translatable="false" key="castle"/>
+        <keys type="10" translatable="false" key="sand"/>
+        <keys type="10" translatable="false" key="frozen"/>
+        <keys type="10" translatable="false" key="swamp_water"/>
+        <keys type="10" translatable="false" key="shallow_water"/>
+        <keys type="10" translatable="false" key="deep_water"/>
+        <keys type="10" translatable="false" key="reef"/>
+        <keys type="10" translatable="false" key="unwalkable"/>
+        <keys type="10" translatable="false" key="impassable"/>
+    </tag>
+    <tag tag="[missile_frame]" context="0">
+        <keys type="10" translatable="false" key="duration"/>
+        <keys type="10" translatable="false" key="begin"/>
+        <keys type="10" translatable="false" key="end"/>
+        <keys type="22" translatable="false" key="image"/>
+        <keys type="22" translatable="false" key="image_diagonal"/>
+        <keys type="20" translatable="false" key="image_mod"/>
+        <keys type="22" translatable="false" key="sound"/>
+        <keys type="1" translatable="false" key="halo"/>
+        <keys type="1" translatable="false" key="halo_x"/>
+        <keys type="1" translatable="false" key="halo_y"/>
+        <keys type="20" translatable="false" key="halo_mod"/>
+        <keys type="1" translatable="false" key="alpha"/>
+        <keys type="1" translatable="false" key="offset"/>
+        <keys type="1" translatable="false" key="blend_color"/>
+        <keys type="1" translatable="false" key="blend_ratio"/>
+        <keys type="20" translatable="true" key="text"/>
+        <keys type="1" translatable="false" key="text_color"/>
+        <keys type="1" translatable="false" key="submerge"/>
+        <keys type="1" translatable="false" key="x"/>
+        <keys type="1" translatable="false" key="y"/>
+        <keys type="1" translatable="false" key="directional_x"/>
+        <keys type="1" translatable="false" key="directional_y"/>
+        <keys type="1" translatable="false" key="layer"/>
+        <keys type="0" translatable="false" key="auto_hflip"/>
+        <keys type="0" translatable="false" key="auto_vflip"/>
+        <keys type="0" translatable="false" key="primary"/>
+    </tag>
+    <tag tag="[message]" context="0">
+        <keys type="23" translatable="false" key="General"/>
+        <keys type="1" translatable="false" key="speaker"/>
+        <keys type="20" translatable="true" key="message"/>
+        <keys type="22" translatable="false" key="image"/>
+        <keys type="20" translatable="true" key="caption"/>
+        <keys type="23" translatable="false" key="Advanced"/>
+        <keys type="0" translatable="false" key="mirror"/>
+        <keys type="20" translatable="true" key="male_message"/>
+        <keys type="20" translatable="true" key="female_message"/>
+        <keys type="22" translatable="false" key="second_image"/>
+        <keys type="2" def="left" translatable="false" key="image_pos">
+            <value>right</value>
+            <value>left</value>
+        </keys>
+        <keys type="0" translatable="false" key="scroll"/>
+        <keys type="0" translatable="false" key="highlight"/>
+        <keys type="22" translatable="false" key="sound"/>
+        <keys type="1" translatable="false" key="variable"/>
+        <keys type="23" translatable="false" key="Multiplayer"/>
+        <keys type="20" translatable="true" key="wait_description"/>
+    </tag>
+    <tag tag="[female]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="20" translatable="true" key="name"/>
+        <keys type="1" translatable="false" key="race"/>
+        <keys type="22" translatable="false" key="image"/>
+        <keys type="22" translatable="false" key="profile"/>
+        <keys type="22" translatable="false" key="small_profile"/>
+        <keys type="22" translatable="false" key="ellipse"/>
+        <keys type="1" translatable="false" key="flag_rgb"/>
+        <keys type="10" translatable="false" key="hitpoints"/>
+        <keys type="1" translatable="false" key="movement_type"/>
+        <keys type="10" translatable="false" key="movement"/>
+        <keys type="10" translatable="false" key="experience"/>
+        <keys type="10" translatable="false" key="level"/>
+        <keys type="2" def="neutral" translatable="false" key="alignment">
+            <value>neutral</value>
+            <value>lawful</value>
+            <value>chaotic</value>
+            <value>liminal</value>
+        </keys>
+        <keys type="1" translatable="false" key="advances_to"/>
+        <keys type="10" translatable="false" key="cost"/>
+        <keys type="1" translatable="false" key="usage"/>
+        <keys type="2" def="male" translatable="false" key="gender">
+            <value>male</value>
+            <value>female</value>
+        </keys>
+        <keys type="21" translatable="true" key="description"/>
+        <keys type="22" translatable="false" key="die_sound"/>
+        <keys type="10" translatable="false" key="attacks"/>
+        <keys type="0" translatable="false" key="do_not_list"/>
+        <keys type="0" def="false" translatable="false" key="hide_help"/>
+        <keys type="0" def="false" translatable="false" key="ignore_race_traits"/>
+        <keys type="22" translatable="false" key="image_icon"/>
+        <keys type="10" translatable="false" key="num_traits"/>
+        <keys type="10" translatable="false" key="vision"/>
+        <keys type="0" translatable="false" key="zoc"/>
+    </tag>
+    <tag tag="[option]" context="0">
+        <keys type="20" translatable="true" key="message"/>
+    </tag>
+    <tag tag="[filter_second]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="1" translatable="false" key="speaker"/>
+        <keys type="1" translatable="false" key="type"/>
+        <keys type="1" translatable="false" key="race"/>
+        <keys type="1" translatable="false" key="ability"/>
+        <keys type="10" translatable="false" key="side"/>
+        <keys type="1" translatable="false" key="has_weapon"/>
+        <keys type="0" translatable="false" key="canrecruit"/>
+        <keys type="1" translatable="false" key="gender"/>
+        <keys type="1" translatable="false" key="role"/>
+        <keys type="10" translatable="false" key="level"/>
+        <keys type="10" translatable="false" key="defense"/>
+        <keys type="10" translatable="false" key="movement_cost"/>
+        <keys type="22" translatable="false" key="x,y"/>
+        <keys type="1" translatable="false" key="find_in"/>
+        <keys type="20" translatable="false" key="formula"/>
+        <keys type="20" translatable="false" key="lua_function"/>
+    </tag>
+    <tag tag="[advance_from]" context="0">
+        <keys type="1" translatable="false" key="unit"/>
+        <keys type="10" translatable="false" key="experience"/>
+    </tag>
+    <tag tag="[side]" context="0">
+        <keys type="23" translatable="false" key="General"/>
+        <keys type="10" translatable="false" key="side"/>
+        <keys type="2" def="human" translatable="false" key="controller">
+            <value>human</value>
+            <value>ai</value>
+            <value>null</value>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+            <value>4</value>
+            <value>5</value>
+            <value>6</value>
+            <value>7</value>
+            <value>8</value>
+            <value>9</value>
+        </keys>
+        <keys type="0" translatable="false" key="no_leader"/>
+        <keys type="10" translatable="false" key="gold"/>
+        <keys type="10" translatable="false" key="income"/>
+        <keys type="1" translatable="false" key="recruit"/>
+        <keys type="0" translatable="false" key="hidden"/>
+        <keys type="0" translatable="false" key="fog"/>
+        <keys type="20" translatable="false" key="fog_data"/>
+        <keys type="0" translatable="false" key="shroud"/>
+        <keys type="20" translatable="false" key="shroud_data"/>
+        <keys type="0" translatable="false" key="persistent"/>
+        <keys type="1" translatable="false" key="save_id"/>
+        <keys type="1" translatable="false" key="team_name"/>
+        <keys type="20" translatable="true" key="user_team_name"/>
+        <keys type="20" translatable="false" key="current_player"/>
+        <keys type="1" translatable="false" key="color"/>
+        <keys type="20" translatable="false" key="flag"/>
+        <keys type="22" translatable="false" key="flag_icon"/>
+        <keys type="10" translatable="false" key="village_gold"/>
+        <keys type="10" translatable="false" key="village_support"/>
+        <keys type="10" translatable="false" key="recall_cost"/>
+        <keys type="0" translatable="false" key="share_maps"/>
+        <keys type="0" translatable="false" key="share_viev"/>
+        <keys type="0" translatable="false" key="scroll_to_leader"/>
+        <keys type="0" translatable="false" key="supress_end_turn_confirmation"/>
+        <keys type="2" def="no_leader_left" translatable="false" key="defead_condition">
+            <value>no_leader_left</value>
+            <value>no_units_left</value>
+            <value>never</value>
+            <value>always</value>
+        </keys>
+        <keys type="23" translatable="false" key="Multiplayer options"/>
+        <keys type="0" translatable="false" key="allow_player"/>
+        <keys type="0" translatable="false" key="disallow_observers"/>
+        <keys type="0" translatable="false" key="choose_random"/>
+        <keys type="0" translatable="false" key="force_lock_settings"/>
+        <keys type="0" translatable="false" key="controller_lock"/>
+        <keys type="0" translatable="false" key="team_lock"/>
+        <keys type="0" translatable="false" key="color_lock"/>
+        <keys type="0" translatable="false" key="gold_lock"/>
+        <keys type="0" translatable="false" key="income_lock"/>
+        <keys type="0" translatable="false" key="faction_lock"/>
+        <keys type="0" translatable="false" key="leader_lock"/>
+        <keys type="1" translatable="false" key="faction"/>
+        <keys type="23" translatable="false" key="Leader define"/>
+        <keys type="0" translatable="false" key="canrecruit"/>
+        <keys type="20" translatable="false" key="extra_recruit"/>
+        <keys type="0" translatable="false" key="unrenamable"/>
+        <keys type="1" translatable="false" key="type"/>
+        <keys type="20" translatable="true" key="name"/>
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="2" def="male" translatable="false" key="gender">
+            <value>female</value>
+            <value>male</value>
+        </keys>
+        <keys type="1" translatable="false" key="variation"/>
+    </tag>
+    <tag tag="[unit_type]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="20" translatable="true" key="name"/>
+        <keys type="1" translatable="false" key="race"/>
+        <keys type="22" translatable="false" key="image"/>
+        <keys type="22" translatable="false" key="profile"/>
+        <keys type="22" translatable="false" key="small_profile"/>
+        <keys type="22" translatable="false" key="ellipse"/>
+        <keys type="1" translatable="false" key="flag_rgb"/>
+        <keys type="10" translatable="false" key="hitpoints"/>
+        <keys type="1" translatable="false" key="movement_type"/>
+        <keys type="10" translatable="false" key="movement"/>
+        <keys type="10" translatable="false" key="experience"/>
+        <keys type="10" translatable="false" key="level"/>
+        <keys type="2" def="neutral" translatable="false" key="alignment">
+            <value>neutral</value>
+            <value>lawful</value>
+            <value>chaotic</value>
+            <value>liminal</value>
+        </keys>
+        <keys type="1" translatable="false" key="advances_to"/>
+        <keys type="10" translatable="false" key="cost"/>
+        <keys type="1" translatable="false" key="usage"/>
+        <keys type="2" def="male" translatable="false" key="gender">
+            <value>male</value>
+            <value>female</value>
+        </keys>
+        <keys type="21" translatable="true" key="description"/>
+        <keys type="22" translatable="false" key="die_sound"/>
+        <keys type="10" translatable="false" key="attacks"/>
+        <keys type="0" translatable="false" key="do_not_list"/>
+        <keys type="0" def="false" translatable="false" key="hide_help"/>
+        <keys type="0" def="false" translatable="false" key="ignore_race_traits"/>
+        <keys type="22" translatable="false" key="image_icon"/>
+        <keys type="10" translatable="false" key="num_traits"/>
+        <keys type="10" translatable="false" key="vision"/>
+        <keys type="0" translatable="false" key="zoc"/>
+    </tag>
+    <tag tag="[part]" context="0">
+        <keys type="22" translatable="false" key="background"/>
+        <keys type="20" translatable="true" key="story"/>
+        <keys type="0" translatable="false" key="show_title"/>
+    </tag>
+    <tag tag="[resistance]" context="0">
+        <keys type="10" translatable="false" key="blade"/>
+        <keys type="10" translatable="false" key="pierce"/>
+        <keys type="10" translatable="false" key="impact"/>
+        <keys type="10" translatable="false" key="fire"/>
+        <keys type="10" translatable="false" key="cold"/>
+        <keys type="10" translatable="false" key="arcane"/>
+    </tag>
+    <tag tag="[filter_recall]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="1" translatable="false" key="speaker"/>
+        <keys type="1" translatable="false" key="type"/>
+        <keys type="1" translatable="false" key="race"/>
+        <keys type="1" translatable="false" key="ability"/>
+        <keys type="10" translatable="false" key="side"/>
+        <keys type="1" translatable="false" key="has_weapon"/>
+        <keys type="0" translatable="false" key="canrecruit"/>
+        <keys type="1" translatable="false" key="gender"/>
+        <keys type="1" translatable="false" key="role"/>
+        <keys type="10" translatable="false" key="level"/>
+        <keys type="10" translatable="false" key="defense"/>
+        <keys type="10" translatable="false" key="movement_cost"/>
+        <keys type="22" translatable="false" key="x,y"/>
+        <keys type="1" translatable="false" key="find_in"/>
+        <keys type="20" translatable="false" key="formula"/>
+        <keys type="20" translatable="false" key="lua_function"/>
+    </tag>
+    <tag tag="[filter]" context="0">
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="1" translatable="false" key="speaker"/>
+        <keys type="1" translatable="false" key="type"/>
+        <keys type="1" translatable="false" key="race"/>
+        <keys type="1" translatable="false" key="ability"/>
+        <keys type="10" translatable="false" key="side"/>
+        <keys type="1" translatable="false" key="has_weapon"/>
+        <keys type="0" translatable="false" key="canrecruit"/>
+        <keys type="1" translatable="false" key="gender"/>
+        <keys type="1" translatable="false" key="role"/>
+        <keys type="10" translatable="false" key="level"/>
+        <keys type="10" translatable="false" key="defense"/>
+        <keys type="10" translatable="false" key="movement_cost"/>
+        <keys type="22" translatable="false" key="x,y"/>
+        <keys type="1" translatable="false" key="find_in"/>
+        <keys type="20" translatable="false" key="formula"/>
+        <keys type="20" translatable="false" key="lua_function"/>
+    </tag>
+    <tag tag="[frame]" context="0">
+        <keys type="10" translatable="false" key="duration"/>
+        <keys type="10" translatable="false" key="begin"/>
+        <keys type="10" translatable="false" key="end"/>
+        <keys type="22" translatable="false" key="image"/>
+        <keys type="22" translatable="false" key="image_diagonal"/>
+        <keys type="20" translatable="false" key="image_mod"/>
+        <keys type="22" translatable="false" key="sound"/>
+        <keys type="1" translatable="false" key="halo"/>
+        <keys type="1" translatable="false" key="halo_x"/>
+        <keys type="1" translatable="false" key="halo_y"/>
+        <keys type="20" translatable="false" key="halo_mod"/>
+        <keys type="1" translatable="false" key="alpha"/>
+        <keys type="1" translatable="false" key="offset"/>
+        <keys type="1" translatable="false" key="blend_color"/>
+        <keys type="1" translatable="false" key="blend_ratio"/>
+        <keys type="20" translatable="true" key="text"/>
+        <keys type="1" translatable="false" key="text_color"/>
+        <keys type="1" translatable="false" key="submerge"/>
+        <keys type="1" translatable="false" key="x"/>
+        <keys type="1" translatable="false" key="y"/>
+        <keys type="1" translatable="false" key="directional_x"/>
+        <keys type="1" translatable="false" key="directional_y"/>
+        <keys type="1" translatable="false" key="layer"/>
+        <keys type="0" translatable="false" key="auto_hflip"/>
+        <keys type="0" translatable="false" key="auto_vflip"/>
+        <keys type="0" translatable="false" key="primary"/>
+    </tag>
+    <tag tag="[unit]" context="0">
+        <keys type="23" translatable="false" key="General"/>
+        <keys type="10" translatable="false" key="side"/>
+        <keys type="1" translatable="false" key="type"/>
+        <keys type="20" translatable="true" key="name"/>
+        <keys type="1" translatable="false" key="id"/>
+        <keys type="2" def="male" translatable="false" key="gender">
+            <value>male</value>
+            <value>female</value>
+        </keys>
+        <keys type="1" translatable="false" key="variation"/>
+        <keys type="2" def="map" translatable="false" key="placement">
+            <value>map</value>
+            <value>leader</value>
+            <value>recall</value>
+            <value>map_overwrite</value>
+            <value>map_passable</value>
+            <value>leader_passable</value>
+        </keys>
+        <keys type="10" translatable="false" key="x"/>
+        <keys type="10" translatable="false" key="y"/>
+        <keys type="23" translatable="false" key="Images"/>
+        <keys type="2" def="se" translatable="false" key="facing">
+            <value>se</value>
+            <value>s</value>
+            <value>sw</value>
+            <value>nw</value>
+            <value>n</value>
+            <value>ne</value>
+        </keys>
+        <keys type="22" translatable="false" key="profile"/>
+        <keys type="22" translatable="false" key="small_profile"/>
+        <keys type="20" translatable="false" key="overlays"/>
+        <keys type="23" translatable="false" key="Leader"/>
+        <keys type="0" translatable="false" key="canrecruit"/>
+        <keys type="20" translatable="false" key="extra_recruit"/>
+        <keys type="23" translatable="false" key="Starting specials"/>
+        <keys type="10" translatable="false" key="hitpoints"/>
+        <keys type="10" translatable="false" key="experience"/>
+        <keys type="10" translatable="false" key="moves"/>
+        <keys type="10" translatable="false" key="attacks_left"/>
+        <keys type="0" translatable="false" key="resting"/>
+        <keys type="2" def="full" translatable="false" key="upkeep">
+            <value>full</value>
+            <value>loyal</value>
+            <value>free</value>
+        </keys>
+        <keys type="23" translatable="false" key="AI"/>
+        <keys type="20" translatable="false" key="goto_x,goto_y"/>
+        <keys type="1" translatable="false" key="ai_special"/>
+        <keys type="23" translatable="false" key="Overrides"/>
+        <keys type="20" translatable="false" key="traits_descriptions"/>
+        <keys type="20" translatable="false" key="unit_description"/>
+        <keys type="10" translatable="false" key="max_attacks"/>
+        <keys type="10" translatable="false" key="max_experience"/>
+        <keys type="10" translatable="false" key="max_hitpoints"/>
+        <keys type="10" translatable="false" key="max_moves"/>
+        <keys type="23" translatable="false" key="Other"/>
+        <keys type="1" translatable="false" key="to_variable"/>
+        <keys type="0" translatable="false" key="generate_name"/>
+        <keys type="0" translatable="false" key="unrenamable"/>
+        <keys type="0" translatable="false" key="random_traits"/>
+        <keys type="0" translatable="false" key="random_gender"/>
+        <keys type="1" translatable="false" key="role"/>
+        <keys type="0" translatable="false" key="animate"/>
+        <keys type="20" translatable="false" key="hp_bar_scalling"/>
+    </tag>
+    <tag tag="*special" context="0">
+        <keys type="1" translatable="false" key="#textdomain"/>
+        <keys type="21" translatable="false" key="code"/>
+    </tag>
+    <tag tag="[village]" context="0">
+        <keys type="10" translatable="false" key="x"/>
+        <keys type="10" translatable="false" key="y"/>
+    </tag>
+    <tag tag="[portrait]" context="0">
+        <keys type="1" translatable="false" key="size"/>
+        <keys type="2" def="left" translatable="false" key="side">
+            <value>left</value>
+            <value>right</value>
+        </keys>
+        <keys type="0" translatable="false" key="mirror"/>
+        <keys type="22" translatable="false" key="image"/>
+    </tag>
+</WMLdatabase>

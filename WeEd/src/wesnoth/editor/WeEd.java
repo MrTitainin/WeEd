@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
+import javax.xml.bind.JAXBException;
 
 public class WeEd {
 	static boolean showAllUnitOptions = false;
@@ -19,7 +20,7 @@ public class WeEd {
 	}
 	public static void main(String[] args) {
 
-		JFrame frame = new JFrame("Wesnoth Editor (Weed) by ZawaPL");
+		JFrame frame = new JFrame("Wesnoth Editor (Weed) by ZawaPL & Jarom");
 		frame.setDefaultCloseOperation(3);
 		frame.setMinimumSize(new Dimension(800, 600));
 		frame.setResizable(true);
@@ -28,6 +29,9 @@ public class WeEd {
 		createFrameContent(frame);
 
 		frame.pack();
+		try {
+			DatabaseManager.readDatabase();
+		} catch (JAXBException e) {e.printStackTrace();}
 	}
 
 	private static void createFrameContent(JFrame frame) {

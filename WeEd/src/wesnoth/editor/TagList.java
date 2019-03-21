@@ -1,5 +1,7 @@
 package wesnoth.editor;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -10,8 +12,10 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.bind.JAXBException;
 
-public class TagList extends JFrame implements ListSelectionListener{
+public class TagList extends JFrame implements ListSelectionListener,WindowListener{
 	private static final long serialVersionUID = 1L;
 	private static String[] columnNames = {"Key","Value type"};
 	private JScrollPane keyListPane;
@@ -19,9 +23,10 @@ public class TagList extends JFrame implements ListSelectionListener{
 	private JTable keyList;
 	private JSplitPane mainPane;
 	private JList<String> tagList;
-	private ArrayList<Listconvertable> source;
+	private ArrayList<? extends Listconvertable> source;
 	
-	public TagList(ArrayList<Listconvertable> tagSource) {
+	public TagList(ArrayList<? extends Listconvertable> tagSource) {
+		DatabaseManager.printDatabase();
 		source=tagSource;
 		String[] tags = new String[tagSource.size()];
 		for(int ii=0;ii<tags.length;ii++) tags[ii]=tagSource.get(ii).toList();
@@ -37,20 +42,26 @@ public class TagList extends JFrame implements ListSelectionListener{
 		keyListPane = new JScrollPane(keyList);
 		tagListPane = new JScrollPane(tagList);
 		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,tagListPane,keyListPane);
-		this.add(mainPane);
+		add(mainPane);
+		pack();
+		addWindowListener(this);
 		setVisible(true);
 	}
 	
 	private void assignKeyList(Tag t) {
-		Object[][] data = new Object[t.keys.size()][];
-		for(int ii=0;ii<data.length;ii++) data[ii] = t.keys.get(ii).toArray();
-		keyList = new JTable(data,columnNames);
+		DefaultTableModel tm = new DefaultTableModel();
+		for(String cm:columnNames) tm.addColumn(cm);
+		for(KeyData entry:t.keys) tm.addRow(entry.toArray());
+		keyList.setModel(tm);
+		revalidate();
 	}
 	
 	private void assignKeyList(Macro m) {
-		Object[][] data = new Object[m.entries.length][];
-		for(int ii=0;ii<data.length;ii++) data[ii] = m.entries[ii].toArray();
-		keyList = new JTable(data,columnNames);
+		DefaultTableModel tm = new DefaultTableModel();
+		for(String cm:columnNames) tm.addColumn(cm);
+		for(KeyData entry:m.entries) tm.addRow(entry.toArray());
+		keyList.setModel(tm);
+		revalidate();
 	}
 
 	@Override
@@ -63,6 +74,46 @@ public class TagList extends JFrame implements ListSelectionListener{
 			} catch (IndexOutOfBoundsException ex){
 				return;
 			}
+			revalidate();
 		}
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		try {
+			DatabaseManager.updateDatabase();
+		} catch (JAXBException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		
 	}
 }

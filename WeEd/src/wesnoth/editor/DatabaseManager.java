@@ -1,7 +1,12 @@
 package wesnoth.editor;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -24,22 +29,44 @@ public class DatabaseManager {
 	public ArrayList<Macro> macros = new ArrayList<Macro>();
 	
 	public DatabaseManager() {
-		bindContext();
+		
+	}
+	public DatabaseManager(boolean b) {
+		try {
+			readDatabase();
+		} catch (JAXBException e) { e.printStackTrace(); }
 	}
 	
 	public static void readDatabase() throws JAXBException{
+		if(ctx==null)bindContext();
 		Unmarshaller databaseum = ctx.createUnmarshaller();
-		database = (DatabaseManager) databaseum.unmarshal(new File(DatabaseManager.class.getResource(databasePath).getFile()));
+		database = (DatabaseManager) databaseum.unmarshal(Paths.get("./"+databasePath).toFile());
+		printDatabase();
 	}
 	public static void updateDatabase() throws JAXBException{
+		if(ctx==null)bindContext();
 		Marshaller databasem = ctx.createMarshaller();
-		databasem.marshal(database, new File(DatabaseManager.class.getResource(databasePath).getFile()));
-	}
-	public static void bindContext() {
+		databasem.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		Path p = Paths.get("./"+databasePath);
 		try {
-			ctx = JAXBContext.newInstance(DatabaseManager.class);
-		} catch (JAXBException e) {
-			e.printStackTrace();
+			Files.createFile(p);
+		} catch (IOException e) {}
+		databasem.marshal(database, p.toFile());
+	}
+	public static void bindContext() throws JAXBException{
+		ctx = JAXBContext.newInstance(DatabaseManager.class);
+	}
+	public void importOldDatabase(HashMap<String, KeyData[]> oldFormat) {
+		tags.ensureCapacity(oldFormat.size());
+		for(Entry<String,KeyData[]> c:oldFormat.entrySet()) {
+			tags.add(new Tag(c.getKey(),c.getValue()));
 		}
+	}
+	public static void printDatabase() {
+		try {
+			if(ctx==null)bindContext();
+			Marshaller databasem = ctx.createMarshaller();
+			databasem.marshal(database,System.out);
+		} catch (JAXBException e) { e.printStackTrace(); }
 	}
 }

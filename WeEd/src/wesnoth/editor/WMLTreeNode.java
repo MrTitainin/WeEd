@@ -75,6 +75,7 @@ public class WMLTreeNode implements TreeNode{
 		return this.children.length == 0;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Enumeration children() {
 		throw new UnsupportedOperationException("Not supported.");
 	}

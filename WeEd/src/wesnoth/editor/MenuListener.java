@@ -24,6 +24,8 @@ public class MenuListener implements ActionListener, ItemListener{
 	private FileTree fileTree;
 	private JTextArea textArea;
 	private TagTree tagTree;
+	@SuppressWarnings("unused")
+	private TagList tagList;
 
 	public MenuListener(FileTree fileTree, JTextArea textArea, TagTree tagTree) {
 		this.fileTree = fileTree;
@@ -56,10 +58,10 @@ public class MenuListener implements ActionListener, ItemListener{
 		     		setPaths();
 		     		break;
 		     	case "manage_tags":
-		     		setPaths();
+		     		showTagsList();
 		     		break;
 		     	case "manage_macros":
-		         	setPaths();
+		         	
 		         	break;
 		     	default:
 		     		throw new UnsupportedOperationException("Not supported yet.");
@@ -160,6 +162,9 @@ public class MenuListener implements ActionListener, ItemListener{
 	    frame.setMinimumSize(new Dimension(600, 160));
 	    frame.setResizable(false);
 	    frame.setVisible(true);
+	}
+	private void showTagsList() {
+		tagList =  new TagList(DatabaseManager.database.tags);
 	}
 	
 	 /* private void saveOptions() {

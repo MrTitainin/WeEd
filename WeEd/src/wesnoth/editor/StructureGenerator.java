@@ -10,20 +10,34 @@ public class StructureGenerator{
 	    KeyData[] keyData = new KeyData[0];
 	
 	    LinkedList<KeyData> movement_costs = new LinkedList<KeyData>();
-	    movement_costs.add(new KeyData(null, KeyData.INTEGER));
+	    movement_costs.add(new KeyData("flat", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("forest", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("hills", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("mountains", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("cave", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("fungus", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("village", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("castle", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("sand", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("frozen", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("swamp_water", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("shallow_water", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("deep_water", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("reef", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("unwalkable", KeyData.INTEGER));
+	    movement_costs.add(new KeyData("impassable", KeyData.INTEGER));
 	    result.put("[movement_costs]", movement_costs.toArray(keyData));
-	
-	    LinkedList<KeyData> vision_costs = new LinkedList<KeyData>();
-	    vision_costs.add(new KeyData(null, KeyData.INTEGER));
-	    result.put("[vision_costs]", vision_costs.toArray(keyData));
+	    result.put("[vision_costs]", movement_costs.toArray(keyData));
+	    result.put("[defense]", movement_costs.toArray(keyData));
 	
 	    LinkedList<KeyData> resistance = new LinkedList<KeyData>();
-	    resistance.add(new KeyData(null, KeyData.INTEGER));
+	    resistance.add(new KeyData("blade", KeyData.INTEGER));
+	    resistance.add(new KeyData("pierce", KeyData.INTEGER));
+	    resistance.add(new KeyData("impact", KeyData.INTEGER));
+	    resistance.add(new KeyData("fire", KeyData.INTEGER));
+	    resistance.add(new KeyData("cold", KeyData.INTEGER));
+	    resistance.add(new KeyData("arcane", KeyData.INTEGER));
 	    result.put("[resistance]", resistance.toArray(keyData));
-	
-	    LinkedList<KeyData> defense = new LinkedList<KeyData>();
-	    defense.add(new KeyData(null, KeyData.INTEGER));
-	    result.put("[defense]", defense.toArray(keyData));
 	
 	    LinkedList<KeyData> filter = new LinkedList<KeyData>();
 	    filter.add(new KeyData("id", (byte)1));
@@ -62,6 +76,7 @@ public class StructureGenerator{
 	    unit_type.add(new KeyData("experience", KeyData.INTEGER));
 	    unit_type.add(new KeyData("level", KeyData.INTEGER));
 	    LinkedList<String> values = new LinkedList<String>();
+	    values.add("neutral");
 	    values.add("lawful");
 	    values.add("chaotic");
 	    values.add("liminal");
@@ -70,6 +85,7 @@ public class StructureGenerator{
 	    unit_type.add(new KeyData("cost", KeyData.INTEGER));
 	    unit_type.add(new KeyData("usage", KeyData.KEY));
 	    values = new LinkedList<String>();
+	    values.add("male");
 	    values.add("female");
 	    unit_type.add(new KeyData("gender", KeyData.OPTIONS, values, "male"));
 	    unit_type.add(new KeyData("description", KeyData.LONG, true));
@@ -137,21 +153,21 @@ public class StructureGenerator{
 	    LinkedList<KeyData> advance_from = new LinkedList<KeyData>();
 	    advance_from.add(new KeyData("unit", KeyData.KEY));
 	    advance_from.add(new KeyData("experience", KeyData.INTEGER));
-	    result.put("[advance_from]", attack.toArray(keyData));
+	    result.put("[advance_from]", advance_from.toArray(keyData));
 	
 	    LinkedList<KeyData> base_unit = new LinkedList<KeyData>();
 	    base_unit.add(new KeyData("id", KeyData.KEY));
-	    result.put("[base_unit]", attack.toArray(keyData));
+	    result.put("[base_unit]", base_unit.toArray(keyData));
 	
 	    LinkedList<KeyData> portrait = new LinkedList<KeyData>();
 	    portrait.add(new KeyData("size", KeyData.KEY));
-	    values.clear();
+	    values = new LinkedList<String>();
 	    values.add("left");
 	    values.add("right");
-	    portrait.add(new KeyData("size", KeyData.OPTIONS, values));
+	    portrait.add(new KeyData("side", KeyData.OPTIONS, values,"left"));
 	    portrait.add(new KeyData("mirror", KeyData.BOOLEAN));
 	    portrait.add(new KeyData("image", KeyData.FILE));
-	    result.put("[portrait]", attack.toArray(keyData));
+	    result.put("[portrait]", portrait.toArray(keyData));
 	    
 	    LinkedList<KeyData> status = new LinkedList<KeyData>();
 	    status.add(new KeyData("poisoned", KeyData.BOOLEAN));
@@ -168,11 +184,13 @@ public class StructureGenerator{
 	    unit.add(new KeyData("type",KeyData.KEY));
 	    unit.add(new KeyData("name",KeyData.STRING,true));
 	    unit.add(new KeyData("id",KeyData.KEY));
-	    values.clear();
+	    values = new LinkedList<String>();
+	    values.add("male");
 	    values.add("female");
 	    unit.add(new KeyData("gender",KeyData.OPTIONS,values,"male"));
 	    unit.add(new KeyData("variation",KeyData.KEY));
-	    values.clear();
+	    values = new LinkedList<String>();;
+	    values.add("map");
 	    values.add("leader");
 	    values.add("recall");
 	    values.add("map_overwrite");
@@ -183,7 +201,8 @@ public class StructureGenerator{
 	    unit.add(new KeyData("y",KeyData.INTEGER));
 	    
 	    unit.add(new KeyData("Images",KeyData.SEPARATOR));
-	    values.clear();
+	    values = new LinkedList<String>();
+	    values.add("se");
 	    values.add("s");
 	    values.add("sw");
 	    values.add("nw");
@@ -205,6 +224,7 @@ public class StructureGenerator{
 	    unit.add(new KeyData("attacks_left",KeyData.INTEGER));
 	    unit.add(new KeyData("resting",KeyData.BOOLEAN));
 	    values = new LinkedList<String>();
+	    values.add("full");
 	    values.add("loyal");
 	    values.add("free");
 	    unit.add(new KeyData("upkeep",KeyData.OPTIONS,values,"full"));
@@ -235,7 +255,8 @@ public class StructureGenerator{
 	    LinkedList<KeyData> side = new LinkedList<KeyData>();
 	    side.add(new KeyData("General",KeyData.SEPARATOR));
 	    side.add(new KeyData("side", KeyData.INTEGER));
-	    values.clear();
+	    values = new LinkedList<String>();;
+	    values.add("human");
 	    values.add("ai");
 	    values.add("null");
 	    values.add("1");
@@ -273,6 +294,7 @@ public class StructureGenerator{
 	    side.add(new KeyData("scroll_to_leader", KeyData.BOOLEAN));
 	    side.add(new KeyData("supress_end_turn_confirmation", KeyData.BOOLEAN));
 	    values = new LinkedList<String>();
+	    values.add("no_leader_left");
 	    values.add("no_units_left");
 	    values.add("never");
 	    values.add("always");
@@ -318,6 +340,7 @@ public class StructureGenerator{
 	        side.add(new KeyData("id",KeyData.KEY));
 	        values = new LinkedList<String>();
 	        values.add("female");
+	        values.add("male");
 	        side.add(new KeyData("gender",KeyData.OPTIONS,values,"male"));
 	        side.add(new KeyData("variation",KeyData.KEY));
 	    }
@@ -336,8 +359,9 @@ public class StructureGenerator{
 	    message.add(new KeyData("male_message",KeyData.STRING,true));
 	    message.add(new KeyData("female_message",KeyData.STRING,true));
 	    message.add(new KeyData("second_image",KeyData.FILE));
-	    values.clear();
+	    values = new LinkedList<String>();;
 	    values.add("right");
+	    values.add("left");
 	    message.add(new KeyData("image_pos",KeyData.OPTIONS,values,"left"));
 	    message.add(new KeyData("scroll",KeyData.BOOLEAN));
 	    message.add(new KeyData("highlight",KeyData.BOOLEAN));
@@ -371,8 +395,8 @@ public class StructureGenerator{
 	    
 	    
 	    LinkedList<KeyData> village = new LinkedList<KeyData>();
-	    side.add(new KeyData("x", KeyData.INTEGER));
-	    side.add(new KeyData("y", KeyData.INTEGER));
+	    village.add(new KeyData("x", KeyData.INTEGER));
+	    village.add(new KeyData("y", KeyData.INTEGER));
 	    result.put("[village]", village.toArray(keyData));
 	    
 	    

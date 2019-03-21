@@ -20,7 +20,7 @@ import javax.swing.JViewport;
 public class FormPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private HashMap<String, KeyData[]> keyList;
-	private final int COLUMNS = 2;
+	//private final int COLUMNS = 2;
 	private WMLTreeNode tagNode;
 	private LinkedList<JComponent> labels;
 	private LinkedList<JComponent> fields;
@@ -34,6 +34,7 @@ public class FormPanel extends JPanel{
 		this.macroTextArea = null;
 
 		this.keyList = StructureGenerator.constructAttrTable();
+		//DatabaseManager.database.importOldDatabase(keyList);
 	}
 
 	protected HashMap<String, KeyData[]> getKeyList() {
@@ -91,6 +92,7 @@ public class FormPanel extends JPanel{
 								s2 = "false";
 						} else {
 							if (!(field instanceof JComboBox)) continue;
+							@SuppressWarnings("unchecked")
 							JComboBox<JComponent> comboBox = (JComboBox<JComponent>)field;
 							s2 = comboBox.getSelectedItem().toString();
 						}

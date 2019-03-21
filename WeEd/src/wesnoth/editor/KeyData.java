@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 
 public class KeyData{
-	@XmlAttribute
 	private String key;
 	@XmlAttribute
 	private byte type;
@@ -39,7 +38,9 @@ public class KeyData{
 	protected static final byte FILE = 22;
 	protected static final byte SEPARATOR = 23;
 	protected static final byte SPECIAL = 19;
-	
+	KeyData(){
+		
+	}
 	KeyData(String key, byte type, LinkedList<String> possibleValues, String def, boolean translatable)
 	{
 		this.key = key;
@@ -213,6 +214,7 @@ public class KeyData{
   		if (type==SEPARATOR) return true;
   		else return false;
   	}
+  	@XmlAttribute
   	public String getKey(){
   		return key;
   	}
@@ -228,6 +230,13 @@ public class KeyData{
   		}
   	}
   	public Object[] toArray() {
+  		String type = "UNKNOWN";
+  		for(TypeMapping tm:getTypeNames()) {
+  			if(tm.id==this.type) {
+  				type=tm.name;
+  				break;
+  			}
+  		}
   		return new Object[] {key,type};
   	}
   	public TypeMapping[] getTypeNames() {
@@ -239,9 +248,9 @@ public class KeyData{
   				new TypeMapping(KEY,"keyword (string)"),
   				new TypeMapping(OPTIONS,"keyword (from list)"),
   				new TypeMapping(STRING,"text (string)"),
-  				new TypeMapping(FILE,"path (string)"),
-  				new TypeMapping(COORDINATES,"special (string)"),
-  				new TypeMapping(RANGE,"special (string)"),
+  				new TypeMapping(FILE,"file path (string)"),
+  				new TypeMapping(COORDINATES,"coordinates (string)"),
+  				new TypeMapping(RANGE,"range (string)"),
   				new TypeMapping(SPECIAL,"special (string)")
   		};
   	}
