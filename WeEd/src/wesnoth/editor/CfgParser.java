@@ -14,8 +14,7 @@ public class CfgParser {
 	private JTextArea output;
 	private HashMap<String, KeyData[]> keyList;
 
-	public CfgParser(JTextArea textArea, HashMap<String, KeyData[]> keys)
-	{
+	public CfgParser(JTextArea textArea, HashMap<String, KeyData[]> keys){
 		this.output = textArea;
 		this.keyList = keys;
 	}

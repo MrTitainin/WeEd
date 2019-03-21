@@ -90,7 +90,7 @@ public class TagTree extends JTree implements TreeSelectionListener, MouseListen
 	    this.textPanel.setText(output);
 	
 	    Preferences prefs = Preferences.userNodeForPackage(WeEd.class);
-	    boolean saveToFile = prefs.getBoolean("saveToFile", false);
+	    boolean saveToFile = prefs.getBoolean("saveToFile", true);
 	
 	    if (saveToFile) {
 	    	FileOutputStream fstream = null;

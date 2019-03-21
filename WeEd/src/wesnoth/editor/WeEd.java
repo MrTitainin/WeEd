@@ -2,9 +2,6 @@ package wesnoth.editor;
 
 import java.awt.Dimension;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -21,15 +18,6 @@ public class WeEd {
 	  
 	}
 	public static void main(String[] args) {
-		if (args.length > 1) {
-			try {
-				Preferences prefs = Preferences.userNodeForPackage(WeEd.class);
-				prefs.clear();
-			} catch (BackingStoreException ex) {
-				Logger.getLogger(WeEd.class.getName()).log(Level.SEVERE, null, ex);
-			}
-
-		}
 
 		JFrame frame = new JFrame("Wesnoth Editor (Weed) by ZawaPL");
 		frame.setDefaultCloseOperation(3);
@@ -93,7 +81,10 @@ public class WeEd {
 
 		JMenu optionMenu = new JMenu("Options");
 		optionMenu.setMnemonic(84);
-
+		
+		optionMenu.add(newMenuItem("Manage tags", menuListener));
+		optionMenu.add(newMenuItem("Manage macros", menuListener));
+		optionMenu.addSeparator();
 		optionMenu.add(newMenuItem("Clear settings", menuListener));
 		optionMenu.addSeparator();
 		optionMenu.add(newMenuItem("Editor settings", menuListener));
