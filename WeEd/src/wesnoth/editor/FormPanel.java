@@ -19,7 +19,7 @@ import javax.swing.JViewport;
 
 public class FormPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
-	private HashMap<String, KeyData[]> keyList;
+	//private HashMap<String, Tag> keyList;
 	//private final int COLUMNS = 2;
 	private WMLTreeNode tagNode;
 	private LinkedList<JComponent> labels;
@@ -33,12 +33,12 @@ public class FormPanel extends JPanel{
 		this.fields = new LinkedList<JComponent>();
 		this.macroTextArea = null;
 
-		this.keyList = StructureGenerator.constructAttrTable();
+		//this.keyList = StructureGenerator.constructAttrTable();
 		//DatabaseManager.database.importOldDatabase(keyList);
 	}
 
-	protected HashMap<String, KeyData[]> getKeyList() {
-		return this.keyList;
+	protected HashMap<String, Tag> getTagList() {
+		return DatabaseManager.database.getTagList();
 	}
 
 	protected void save() {
@@ -124,18 +124,16 @@ public class FormPanel extends JPanel{
 		fieldConstrains.anchor = 23;
 
 		if (root) {
-			KeyData[] specialKeys = (KeyData[])this.keyList.get("*special");
-			for (KeyData key : specialKeys) {
+			for (KeyData key : getTagList().get("*special").keys) {
 				if (key.toString().equals("#textdomain")) {
 					addField(attributes, key, fieldConstrains, false);
 				}
 			}
 		}
 
-		if (this.keyList.containsKey(tag)) {
-			KeyData[] keys = (KeyData[])this.keyList.get(tag);
+		if (getTagList().containsKey(tag)) {
 
-			for (KeyData key : keys) {
+			for (KeyData key : getTagList().get(tag).keys) {
 				if (key.isUniversal()) {
 					String[] universalKeys = (String[])attributes.keySet().toArray(new String[0]);
 					for (String universalKey : universalKeys) {

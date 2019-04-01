@@ -4,6 +4,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -24,6 +25,14 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 	private JSplitPane mainPane;
 	private JList<String> tagList;
 	private ArrayList<? extends Listconvertable> source;
+	private DefaultTableModel tm = new DefaultTableModel() {
+		private static final long serialVersionUID = 1L;
+		@Override
+		public Class<?> getColumnClass(int col) {
+			if(col==1) return JComboBox.class;
+			else return String.class;
+		}
+	};
 	
 	public TagList(ArrayList<? extends Listconvertable> tagSource) {
 		DatabaseManager.printDatabase();
@@ -49,16 +58,16 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 	}
 	
 	private void assignKeyList(Tag t) {
-		DefaultTableModel tm = new DefaultTableModel();
-		for(String cm:columnNames) tm.addColumn(cm);
+		if(tm.getColumnCount()!=2) for(String cm:columnNames) tm.addColumn(cm);
+		tm.setRowCount(0);
 		for(KeyData entry:t.keys) tm.addRow(entry.toArray());
 		keyList.setModel(tm);
 		revalidate();
 	}
 	
 	private void assignKeyList(Macro m) {
-		DefaultTableModel tm = new DefaultTableModel();
-		for(String cm:columnNames) tm.addColumn(cm);
+		if(tm.getColumnCount()!=2) for(String cm:columnNames) tm.addColumn(cm);
+		tm.setRowCount(0);
 		for(KeyData entry:m.entries) tm.addRow(entry.toArray());
 		keyList.setModel(tm);
 		revalidate();
@@ -116,4 +125,12 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 	public void windowDeactivated(WindowEvent e) {
 		
 	}
+	
+	/*private class TableClickHandler extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			keyList.rowAtPoint(e.getPoint());
+			keyList.columnAtPoint(e.getPoint());
+		}
+	}*/
 }

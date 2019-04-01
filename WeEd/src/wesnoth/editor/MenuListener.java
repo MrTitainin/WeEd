@@ -80,7 +80,7 @@ public class MenuListener implements ActionListener, ItemListener{
 	    int returnVal = chooser.showOpenDialog(this.fileTree);
 	    if(returnVal == 0) {
 	    	this.fileTree.clearSelection();
-	    	CfgParser parser = new CfgParser(this.textArea, this.tagTree.getKeyList());
+	    	CfgParser parser = new CfgParser(this.textArea, this.tagTree.getTagList());
 	    	WMLTreeModel hierarchyTree = parser.parseCfg(chooser.getSelectedFile());
 	    	this.tagTree.implement(hierarchyTree);
 	    }

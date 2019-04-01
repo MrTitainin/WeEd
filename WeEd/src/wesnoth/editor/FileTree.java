@@ -70,7 +70,7 @@ public class FileTree extends JTree implements TreeSelectionListener{
 			String extension = name.substring(name.lastIndexOf(".") + 1);
 			this.tagTree.implement(null);
 			if (extension.equals("cfg")) {
-				CfgParser parser = new CfgParser(this.textArea, this.formPanel.getKeyList());
+				CfgParser parser = new CfgParser(this.textArea, this.formPanel.getTagList());
 				WMLTreeModel hierarchyTree = parser.parseCfg(file);
 				this.tagTree.implement(hierarchyTree);
 			} else if (extension.equals("png")) {

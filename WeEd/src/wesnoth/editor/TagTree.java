@@ -86,7 +86,7 @@ public class TagTree extends JTree implements TreeSelectionListener, MouseListen
 	    }
 	    this.formPanel.save();
 	
-	    String output = CodeGenerator.parseTagTree(getModel(), this.formPanel.getKeyList());
+	    String output = CodeGenerator.parseTagTree(getModel(), this.formPanel.getTagList());
 	    this.textPanel.setText(output);
 	
 	    Preferences prefs = Preferences.userNodeForPackage(WeEd.class);
@@ -141,8 +141,8 @@ public class TagTree extends JTree implements TreeSelectionListener, MouseListen
 	public void mouseExited(MouseEvent e) {
 	}
 	
-	public HashMap<String, KeyData[]> getKeyList() {
-		return this.formPanel.getKeyList();
+	public HashMap<String, Tag> getTagList() {
+		return this.formPanel.getTagList();
 	}
 	
 	public void actionPerformed(ActionEvent e) {

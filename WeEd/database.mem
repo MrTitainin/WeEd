@@ -517,4 +517,7 @@
         <keys type="0" translatable="false" key="mirror"/>
         <keys type="22" translatable="false" key="image"/>
     </tag>
+    <tag tag="[ai]" context="0">
+        <keys type="0" translatable="false" key="passive_leader"/>
+    </tag>
 </WMLdatabase>

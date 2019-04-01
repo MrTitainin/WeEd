@@ -12,9 +12,9 @@ import javax.swing.JTextArea;
 
 public class CfgParser {
 	private JTextArea output;
-	private HashMap<String, KeyData[]> keyList;
+	private HashMap<String, Tag> keyList;
 
-	public CfgParser(JTextArea textArea, HashMap<String, KeyData[]> keys){
+	public CfgParser(JTextArea textArea, HashMap<String, Tag> keys){
 		this.output = textArea;
 		this.keyList = keys;
 	}
@@ -62,7 +62,7 @@ public class CfgParser {
 		HashMap<String, String> attributes = new HashMap<String, String>();//attributs are tags, macros and #if's, also #textdomain, but in other way
 		LinkedList<WMLTreeNode> children = new LinkedList<WMLTreeNode>();//list of children nodes
     
-		KeyData[] keys = (KeyData[])this.keyList.get(tag);
+		Tag keys = this.keyList.get(tag);
 		String strLine;
 		while ((strLine = br.readLine()) != null) {
 			String trimmed = strLine.trim();
@@ -176,9 +176,9 @@ public class CfgParser {
     	parseCFG(br,node,null,"#endif");
 	}
 
-	private boolean insert(String key, String value, HashMap<String, String> attributes, KeyData[] keys, BufferedReader br) throws IOException {
-		if ((keys != null) && (key != null)) {
-			for (KeyData keyData : keys) {
+	private boolean insert(String key, String value, HashMap<String, String> attributes, Tag tag, BufferedReader br) throws IOException {
+		if ((tag != null) && (key != null)) {
+			for (KeyData keyData : tag.keys) {
 				if ((keyData.isUniversal()) || (keyData.toString().equals(key))) {
 					attributes.put(key, keyData.parseString(value, br));
 					return false;

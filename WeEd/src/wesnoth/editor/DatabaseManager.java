@@ -69,4 +69,9 @@ public class DatabaseManager {
 			databasem.marshal(database,System.out);
 		} catch (JAXBException e) { e.printStackTrace(); }
 	}
+	public HashMap<String,Tag> getTagList(){
+		HashMap<String,Tag> tagList = new HashMap<String,Tag>();
+		for(Tag t:tags) tagList.put(t.name, t);
+		return tagList;
+	}
 }

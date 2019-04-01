@@ -6,7 +6,7 @@ import javax.swing.tree.TreeModel;
 public class CodeGenerator{
 	static final String INDENTATION = "    ";
 
-	protected static String parseTagTree(TreeModel treeModel, HashMap<String, KeyData[]> keyList){
+	protected static String parseTagTree(TreeModel treeModel, HashMap<String, Tag> keyList){
 		System.out.println("start parsing the tree");
 		
 		String result = "";
@@ -23,7 +23,7 @@ public class CodeGenerator{
 		return result;
 	}
 
-	private static String examineNode(int indentation, WMLTreeNode node, HashMap<String, KeyData[]> keyList) {
+	private static String examineNode(int indentation, WMLTreeNode node, HashMap<String, Tag> keyList) {
 		HashMap<String, String> data = node.getAttributes();
 		String tag = node.toString();
 		boolean isMacro = tag.charAt(0) == '{';
@@ -36,8 +36,8 @@ public class CodeGenerator{
 		}
 
 		if (keyList.containsKey(tag)) {
-			KeyData[] keys = (KeyData[])keyList.get(tag);
-			for (KeyData key : keys) {
+			Tag keys = keyList.get(tag);
+			for (KeyData key : keys.keys) {
 				String keyString = key.toString();
 				if (data.containsKey(keyString)) {
 					String s = keyString + '=';
