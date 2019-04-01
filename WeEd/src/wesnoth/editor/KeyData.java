@@ -23,8 +23,6 @@ public class KeyData{
 	private String def;
 	@XmlElements(@XmlElement(name="value"))
 	private LinkedList<String> possibleValues;
-	@XmlAttribute
-	private boolean translatable;
 	
 	protected static final byte BOOLEAN = 0;
 	protected static final byte KEY = 1;
@@ -34,40 +32,32 @@ public class KeyData{
 	protected static final byte COORDINATES = 12;
 	protected static final byte RANGE = 13;
 	protected static final byte STRING = 20;
+	protected static final byte TRANSLATABLE = 18;
 	protected static final byte LONG = 21;
 	protected static final byte FILE = 22;
 	protected static final byte SEPARATOR = 23;
+	
 	protected static final byte SPECIAL = 19;
-	KeyData(){
+	public KeyData(){
 		
 	}
-	KeyData(String key, byte type, LinkedList<String> possibleValues, String def, boolean translatable)
-	{
+	public KeyData(String key, byte type, LinkedList<String> possibleValues, String def){
 		this.key = key;
 		this.type = type;
 		this.def = def;
 		this.possibleValues = possibleValues;
-		this.translatable = translatable;
 	}
 	
-	KeyData(String k, byte t, LinkedList<String> p, String d) {
-		this(k, t, p, d, false);
+	public KeyData(String k, byte t, LinkedList<String> p) {
+		this(k, t, p, null);
 	}
 	
-	KeyData(String k, byte t, LinkedList<String> p) {
-		this(k, t, p, null, false);
+	public KeyData(String k, byte t, String d) {
+		this(k, t, null, d);
 	}
 	
-	KeyData(String k, byte t, boolean tr) {
-		this(k, t, null, null, tr);
-	}
-	
-	KeyData(String k, byte t, String d) {
-		this(k, t, null, d, false);
-	}
-	
-	KeyData(String k, byte t) {
-		this(k, t, null, null, false);
+	public KeyData(String k, byte t) {
+		this(k, t, null, null);
 	}
 	
 	public JComponent getComponent(String data) {
@@ -145,7 +135,7 @@ public class KeyData{
   				str = str + line;
   			}
   		} else {
-  			if ((str != null) && (this.translatable) && (str.startsWith("_"))) {
+  			if ((str != null) && (this.isTranslatable()) && (str.startsWith("_"))) {
   				System.out.println("Translatable found");
   				str = str.substring(1).trim();
   			}
@@ -195,13 +185,15 @@ public class KeyData{
   		return this.type == 21;
   	}
   	
-  	protected boolean getTranslatable() {
-  		return this.translatable;
+  	protected boolean isTranslatable() {
+  		return type==TRANSLATABLE;
   	}
   	
+  	
   	protected boolean isEnquoted() {
-  		return this.type >= 20;
+  		return this.type >= 20 || this.type==22;
   	}
+  	
   	
   	protected void changeKey(String newKey) {
   		this.key = newKey;
@@ -248,10 +240,45 @@ public class KeyData{
   				new TypeMapping(KEY,"keyword (string)"),
   				new TypeMapping(OPTIONS,"keyword (from list)"),
   				new TypeMapping(STRING,"text (string)"),
+  				new TypeMapping(TRANSLATABLE,"translatable (string)"),
   				new TypeMapping(FILE,"file path (string)"),
   				new TypeMapping(COORDINATES,"coordinates (string)"),
   				new TypeMapping(RANGE,"range (string)"),
   				new TypeMapping(SPECIAL,"special (string)")
   		};
+  	}
+  	public static KeyData guessType(String key,String value) {
+  		if(value.charAt(0)=='_') {
+  			return new KeyData(key,TRANSLATABLE);
+  		}
+  		else if(value.charAt(0)=='\"') {
+  			if(value.contains(".")) {
+  				return new KeyData(key,FILE);
+  			}
+  			else {
+  				return new KeyData(key,STRING);
+  			}
+  		}
+  		else {
+  			try {
+  				Integer.parseInt(value);
+  			}
+  			catch(NumberFormatException e) {
+  				try {
+  					Long.parseLong(value);
+  				}
+  				catch(NumberFormatException e1) {
+  					try {
+  						Float.parseFloat(value);
+  					}
+  					catch(NumberFormatException e2) {
+  						return new KeyData(key,KEY);
+  					}
+  					return new KeyData(key,FLOAT);
+  				}
+				return new KeyData(key,LONG);
+  			}
+			return new KeyData(key,INTEGER);
+  		}
   	}
 }

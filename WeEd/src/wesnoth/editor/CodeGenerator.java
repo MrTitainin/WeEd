@@ -44,7 +44,7 @@ public class CodeGenerator{
 					String value = (String)data.get(keyString);
 					
 					if (!key.isBig()) {
-						if (key.getTranslatable()) {
+						if (key.isTranslatable()) {
 							s = s + "_";
 						}
 						if (key.isEnquoted()) {
@@ -59,7 +59,7 @@ public class CodeGenerator{
 						String value = (String)data.get(universalKey);
 						
 						if (!key.isBig()) {
-							if (key.getTranslatable()) {
+							if (key.isTranslatable()) {
 								s = s + "_";
 							}
 							if (key.isEnquoted()) {

@@ -63,7 +63,7 @@ public class StructureGenerator{
 	
 	    LinkedList<KeyData> unit_type = new LinkedList<KeyData>();
 	    unit_type.add(new KeyData("id", KeyData.KEY));
-	    unit_type.add(new KeyData("name", KeyData.STRING, true));
+	    unit_type.add(new KeyData("name", KeyData.TRANSLATABLE));
 	    unit_type.add(new KeyData("race", KeyData.KEY));
 	    unit_type.add(new KeyData("image", KeyData.FILE));
 	    unit_type.add(new KeyData("profile", KeyData.FILE));
@@ -88,7 +88,7 @@ public class StructureGenerator{
 	    values.add("male");
 	    values.add("female");
 	    unit_type.add(new KeyData("gender", KeyData.OPTIONS, values, "male"));
-	    unit_type.add(new KeyData("description", KeyData.LONG, true));
+	    unit_type.add(new KeyData("description", KeyData.TRANSLATABLE));
 	    unit_type.add(new KeyData("die_sound", KeyData.FILE));
 	    unit_type.add(new KeyData("attacks", KeyData.INTEGER));
 	    unit_type.add(new KeyData("do_not_list", KeyData.BOOLEAN));
@@ -103,7 +103,7 @@ public class StructureGenerator{
 	    result.put("[female]", unit_type.toArray(keyData));
 	
 	    LinkedList<KeyData> attack = new LinkedList<KeyData>();
-	    attack.add(new KeyData("description", KeyData.STRING, true));
+	    attack.add(new KeyData("description", KeyData.TRANSLATABLE));
 	    attack.add(new KeyData("name", KeyData.KEY));
 	    attack.add(new KeyData("type", KeyData.KEY));
 	    attack.add(new KeyData("icon", KeyData.FILE));
@@ -136,7 +136,7 @@ public class StructureGenerator{
 	    frame.add(new KeyData("offset", KeyData.KEY));
 	    frame.add(new KeyData("blend_color", KeyData.KEY));
 	    frame.add(new KeyData("blend_ratio", KeyData.KEY));
-	    frame.add(new KeyData("text", KeyData.STRING,true));
+	    frame.add(new KeyData("text", KeyData.TRANSLATABLE));
 	    frame.add(new KeyData("text_color", KeyData.KEY));
 	    frame.add(new KeyData("submerge", KeyData.KEY));
 	    frame.add(new KeyData("x", KeyData.KEY));
@@ -182,7 +182,7 @@ public class StructureGenerator{
 	    unit.add(new KeyData("General",KeyData.SEPARATOR));
 	    unit.add(new KeyData("side",KeyData.INTEGER));
 	    unit.add(new KeyData("type",KeyData.KEY));
-	    unit.add(new KeyData("name",KeyData.STRING,true));
+	    unit.add(new KeyData("name",KeyData.TRANSLATABLE));
 	    unit.add(new KeyData("id",KeyData.KEY));
 	    values = new LinkedList<String>();
 	    values.add("male");
@@ -281,7 +281,7 @@ public class StructureGenerator{
 	    side.add(new KeyData("persistent", KeyData.BOOLEAN));
 	    side.add(new KeyData("save_id", KeyData.KEY));
 	    side.add(new KeyData("team_name", KeyData.KEY));
-	    side.add(new KeyData("user_team_name", KeyData.STRING,true));
+	    side.add(new KeyData("user_team_name", KeyData.TRANSLATABLE));
 	    side.add(new KeyData("current_player", KeyData.STRING));
 	    side.add(new KeyData("color", KeyData.KEY));
 	    side.add(new KeyData("flag", KeyData.STRING));
@@ -336,7 +336,7 @@ public class StructureGenerator{
 	        side.add(new KeyData("extra_recruit",KeyData.STRING));
 	        side.add(new KeyData("unrenamable",KeyData.BOOLEAN));
 	        side.add(new KeyData("type",KeyData.KEY));
-	        side.add(new KeyData("name",KeyData.STRING,true));
+	        side.add(new KeyData("name",KeyData.TRANSLATABLE));
 	        side.add(new KeyData("id",KeyData.KEY));
 	        values = new LinkedList<String>();
 	        values.add("female");
@@ -350,14 +350,14 @@ public class StructureGenerator{
 	    LinkedList<KeyData> message = new LinkedList<KeyData>();
 	    message.add(new KeyData("General", KeyData.SEPARATOR));
 	    message.add(new KeyData("speaker",KeyData.KEY));
-	    message.add(new KeyData("message",KeyData.STRING,true));
+	    message.add(new KeyData("message",KeyData.TRANSLATABLE));
 	    message.add(new KeyData("image",KeyData.FILE));
-	    message.add(new KeyData("caption",KeyData.STRING,true));
+	    message.add(new KeyData("caption",KeyData.TRANSLATABLE));
 	    
 	    message.add(new KeyData("Advanced", KeyData.SEPARATOR));
 	    message.add(new KeyData("mirror",KeyData.BOOLEAN));
-	    message.add(new KeyData("male_message",KeyData.STRING,true));
-	    message.add(new KeyData("female_message",KeyData.STRING,true));
+	    message.add(new KeyData("male_message",KeyData.TRANSLATABLE));
+	    message.add(new KeyData("female_message",KeyData.TRANSLATABLE));
 	    message.add(new KeyData("second_image",KeyData.FILE));
 	    values = new LinkedList<String>();;
 	    values.add("right");
@@ -369,12 +369,12 @@ public class StructureGenerator{
 	    message.add(new KeyData("variable",KeyData.KEY));
 	    
 	    message.add(new KeyData("Multiplayer", KeyData.SEPARATOR));
-	    message.add(new KeyData("wait_description",KeyData.STRING,true));
+	    message.add(new KeyData("wait_description",KeyData.TRANSLATABLE));
 	    result.put("[message]", message.toArray(keyData));
 	    
 	    LinkedList<KeyData> scenario = new LinkedList<KeyData>();
 	    scenario.add(new KeyData("id",KeyData.KEY));
-	    scenario.add(new KeyData("name",KeyData.STRING,true));
+	    scenario.add(new KeyData("name",KeyData.TRANSLATABLE));
 	    scenario.add(new KeyData("turns",KeyData.INTEGER));
 	    scenario.add(new KeyData("map_data",KeyData.FILE));
 	    scenario.add(new KeyData("next_scenario",KeyData.KEY));
@@ -390,7 +390,7 @@ public class StructureGenerator{
 	    
 	    
 	    LinkedList<KeyData> option = new LinkedList<KeyData>();
-	    option.add(new KeyData("message",KeyData.STRING,true));
+	    option.add(new KeyData("message",KeyData.TRANSLATABLE));
 	    result.put("[option]", option.toArray(keyData));
 	    
 	    
@@ -402,7 +402,7 @@ public class StructureGenerator{
 	    
 	    LinkedList<KeyData> part = new LinkedList<KeyData>();
 	    part.add(new KeyData("background", KeyData.FILE));
-	    part.add(new KeyData("story", KeyData.STRING,true));
+	    part.add(new KeyData("story", KeyData.TRANSLATABLE));
 	    part.add(new KeyData("show_title", KeyData.BOOLEAN));
 	    result.put("[part]", part.toArray(keyData));
 	    return result;

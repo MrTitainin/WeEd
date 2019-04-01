@@ -164,7 +164,7 @@ public class MenuListener implements ActionListener, ItemListener{
 	    frame.setVisible(true);
 	}
 	private void showTagsList() {
-		tagList =  new TagList(DatabaseManager.database.tags);
+		tagList =  new TagList();
 	}
 	
 	 /* private void saveOptions() {

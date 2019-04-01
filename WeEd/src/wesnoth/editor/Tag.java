@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 
-public class Tag implements Listconvertable{
+public class Tag{
 	/*public class Category{
 		String header;
 		int contextID;
@@ -28,10 +28,5 @@ public class Tag implements Listconvertable{
 		this.name=name;
 		this.keys.ensureCapacity(keys.length);
 		for(KeyData k:keys) this.keys.add(k);
-	}
-	//public ArrayList<Category> categories = new ArrayList<Category>(); 
-	@Override
-	public String toList() {
-		return name;
 	}
 }

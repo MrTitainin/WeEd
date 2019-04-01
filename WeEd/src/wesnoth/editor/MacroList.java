@@ -17,11 +17,11 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.JAXBException;
 
-public class TagList extends JFrame implements ListSelectionListener,WindowListener{
+public class MacroList extends JFrame implements ListSelectionListener,WindowListener{
 	private static final long serialVersionUID = 1L;
 	private static String[] columnNames = {"Key","Value type"};
 	private JScrollPane keyListPane;
-	private JScrollPane tagListPane;
+	private JScrollPane macroListPane;
 	private JTable keyList;
 	private JSplitPane mainPane;
 	private JList<String> tagList;
@@ -34,10 +34,10 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 		}
 	};
 	
-	public TagList() {
+	public MacroList() {
 		//DatabaseManager.printDatabase();
-		String[] tags = new String[DatabaseManager.database.tags.size()];
-		for(int ii=0;ii<tags.length;ii++) tags[ii]=DatabaseManager.database.tags.get(ii).name;
+		String[] tags = new String[DatabaseManager.database.macros.size()];
+		for(int ii=0;ii<tags.length;ii++) tags[ii]=DatabaseManager.database.macros.get(ii).name;
 		setAll(tags);
 	}
 	
@@ -50,11 +50,11 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 
 	                int row = keyList.getSelectedRow();
 	                int column = keyList.getSelectedColumn();
-	                Tag act = DatabaseManager.database.tags.get(row);
+	                Macro act =DatabaseManager.database.macros.get(row);
 	                switch(column) {
 	                case 0:
-                		Tag t =(Tag) act;
-                		t.keys.get(row).changeKey(keyList.getValueAt(row, column).toString());
+                		Macro m =(Macro) act;
+                		m.entries[row].changeKey(keyList.getValueAt(row, column).toString());
 	                	if (keyList.isEditing()) keyList.getCellEditor().stopCellEditing();
 	                	break;
 	                case 1:
@@ -69,18 +69,18 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 		tagList.getSelectionModel().addListSelectionListener(this);
 		
 		keyListPane = new JScrollPane(keyList);
-		tagListPane = new JScrollPane(tagList);
-		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,tagListPane,keyListPane);
+		macroListPane = new JScrollPane(tagList);
+		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,macroListPane,keyListPane);
 		add(mainPane);
 		pack();
 		addWindowListener(this);
 		setVisible(true);
 	}
 	
-	private void assignKeyList(Tag t) {
+	private void assignKeyList(Macro m) {
 		if(tm.getColumnCount()!=2) for(String cm:columnNames) tm.addColumn(cm);
 		tm.setRowCount(0);
-		for(KeyData entry:t.keys) tm.addRow(entry.toArray());
+		for(KeyData entry:m.entries) tm.addRow(entry.toArray());
 		keyList.setModel(tm);
 		revalidate();
 	}
@@ -89,7 +89,7 @@ public class TagList extends JFrame implements ListSelectionListener,WindowListe
 	public void valueChanged(ListSelectionEvent e) {
 		if(!e.getValueIsAdjusting()) {
 			try {
-				assignKeyList(DatabaseManager.database.tags.get(tagList.getSelectedIndex()));
+				assignKeyList(DatabaseManager.database.macros.get(tagList.getSelectedIndex()));
 			} catch (IndexOutOfBoundsException ex){
 				return;
 			}
